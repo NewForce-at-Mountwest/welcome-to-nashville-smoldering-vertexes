@@ -11,7 +11,5 @@ function itinPrinter() {
     <div class="itin-div" id="itin-div"></div>`
 }
 
-resultsPrinter()
 
-itinPrinter()
 
