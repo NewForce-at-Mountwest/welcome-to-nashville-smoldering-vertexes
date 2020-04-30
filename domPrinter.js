@@ -23,7 +23,7 @@ document.querySelector("#search").innerHTML = `<h2>Search for stuff to do today<
 
 //Search results printer
 document.querySelector("#results").innerHTML = `<h2>Results</h2>
-<textarea class="results-textarea" id="results-textarea" cols="30" rows="10"></textarea>`
+<div class="results-div" id="results-textarea" ></div>`
 
 //Itinerary printer
 document.querySelector("#itinerary").innerHTML = `<h2>My itinerary</h2>
