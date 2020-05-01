@@ -1,53 +1,80 @@
+let restaurantsArray;
+
+
+
 //Writes the input and button for the restaurants search to the restaurants div.
 document.querySelector(".restaurants-div").innerHTML += `
 <input type="text" class="restaurants-input" id="restaurants-input" placeholder="Restaurants" >
+<select id="restaurants-sort">
+    <option value="ratingHigh">Rating high to low</option>
+    <option value="ratingLow">Rating low to high</option>
+    <option value="costHigh">Cost for two high to low</option>
+    <option value="costLow">Cost for two low to high</option>
+</select>
 <button class="restaurants-btn" id="restaurants-btn">Search</button>
 `
+
 
 
 document.querySelector(".restaurants-div").addEventListener("click", function () {
 
     if(event.target.id === "restaurants-btn"){
     resultsPrinter()
-
-    // let type = "mexican"
+    let type = document.querySelector("#restaurants-input").value
+    
     // fetch statement to get the restaurants for Nashville using the zomato api and parsing the response to json
-    fetch(`https://developers.zomato.com/api/v2.1/search?entity_id=1138&entity_type=city&q=$mexican`, {
+    fetch(`https://developers.zomato.com/api/v2.1/search?entity_id=1138&entity_type=city&q=${type}`, {
         headers: {
             "user-key": "d551a890df0c959e96ecd3ba09324aa3",
         }
     })
         .then(restaurants => restaurants.json())
         .then(parsedRestaurants => {
-
-           
-
-            console.log(parsedRestaurants.restaurants)
-
+            // console.log(parsedRestaurants.restaurants)
+            const inputValue = document.querySelector("#restaurants-sort").value
+            if (inputValue === "ratingHigh") {
+                sortRatingHigh(parsedRestaurants.restaurants)
+            } else if(inputValue === "ratingLow"){
+                sortRatingLow(parsedRestaurants.restaurants)
+            } else if(inputValue === "costHigh"){
+                sortCostHigh(parsedRestaurants.restaurants)
+            } else if(inputValue === "costLow"){
+                sortCostLow(parsedRestaurants.restaurants)
+            }
+            
+            let counter = 0;
             parsedRestaurants.restaurants.forEach(singleRestaurant => {
                 document.querySelector("#results-div").innerHTML += `
-                <div class="restaurants-search-result">
+                <article class="restaurants-search-result" id="rest-article${counter}">
+                <div class="restaurants-search-div" id="rest-div${counter}">
                 <h4>
                 ${singleRestaurant.restaurant.name}
                 </h4>
                 <p>
-                Average cost for two: ${singleRestaurant.restaurant.average_cost_for_two}
+                User rating: ${singleRestaurant.restaurant.user_rating.aggregate_rating}
                 </p>
                 <p>
-                User rating: ${singleRestaurant.restaurant.user_rating.aggregate_rating}
-                </p>                    
-                </div>`
+                Average cost for two: ${singleRestaurant.restaurant.average_cost_for_two}
+                </p>         
+                </div>
+                <button id=rest-add-btn${counter} value=${counter}>Add</button>           
+                </article>
+                `
+                counter++;
             });
         })
     }
-
     })
 
 
 
-
-
-
+document.querySelector("#results").addEventListener("click", function(){
+        itinPrinter()    
+        console.log("It works")
+        console.log(`#rest-article${event.target.value}`)
+        document.querySelector("#itin-div").append(document.querySelector(`#rest-div${event.target.value}`) )   
+})
+   
 
 
 
@@ -55,13 +82,12 @@ document.querySelector(".restaurants-div").addEventListener("click", function ()
 
     function linksPrinter() {
     document.querySelector("#results-div").innerHTML += `
-    <a id="rating-high" href="">Arrange by user rating high to low</a>
-    <a id="rating-low" href="">Arrange by user rating low to high</a>
-    <a id="cost-high" href="">Arrange by price for two high to low</a>
-    <a id="cost-low" href="">Arrange by price for two high to low</a>
+    <a id="rating-high" href="">Rating high to low</a>
+    <a id="rating-low" href="">Rating low to high</a>
+    <a id="cost-high" href="">Price for two high to low</a>
+    <a id="cost-low" href="">Price for two high to low</a>
     `
 }
-
 
 
 
@@ -84,3 +110,8 @@ function sortRatingHigh(array) {
     )
 }
 
+function sortRatingLow(array) {
+    array.sort((a, b) =>
+        Number(a.restaurant.user_rating.aggregate_rating) - Number(b.restaurant.user_rating.aggregate_rating)
+    )
+}
