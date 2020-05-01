@@ -161,7 +161,7 @@ fetch("https://app.ticketmaster.com/discovery/v2/events.json?classificationName=
 
 
 
-//Itinerary printer
+// Itinerary printer
 // function itinPrinter() {
 //     document.querySelector("#itinerary").innerHTML = `<h2>My itinerary</h2>
 //     <div class="itin-div" id="itin-div"></div>`
