@@ -1,0 +1,40 @@
+*{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+header{
+    width: auto;
+    height: 45vh;
+    font-size: xx-large;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(12, 12, 73);
+}
+
+.header-div {
+    display: block;
+    color: white;
+    width: fit-content;
+    margin: auto;
+    padding: 1em;
+}
+
+.search{
+    margin: 1em;
+}
+
+.header-img{
+    background-image: url(https://media.giphy.com/media/SaSF5cbK6qOvziRaDc/giphy.gif);
+    background-repeat: no-repeat;
+    width: 8em;
+    margin-left: 2em;
+}
+
+.nashville-flag{
+    justify-content: flex-end;
+    margin-left: 8em;
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Nashville%2C_Tennessee.png);
+    background-repeat: no-repeat;
+}
