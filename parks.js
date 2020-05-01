@@ -14,7 +14,7 @@ document.querySelector("#parks-search-btn").addEventListener("click", function()
             console.log(parksArray)
             let counter = 1;
             parksArray.forEach(park => {
-                document.querySelector("#results-div").innerHTML += `<p>${counter}. ${park.park_name}: <em>${park.mapped_location_address}<em></p>`
+                document.querySelector("#results-div").innerHTML += `<p>${counter}. ${park.park_name}: <em>${park.mapped_location_address}<em> <button id= "sav-btn-${counter}">Save</button></p>`
                 counter++; 
             })
             
