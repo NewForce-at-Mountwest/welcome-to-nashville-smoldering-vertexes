@@ -5,6 +5,15 @@ fetch("https://app.ticketmaster.com/discovery/v2/events.json?classificationName=
     .then(response => response.json())
     .then(eventInfoArray => {
         console.log(eventInfoArray._embedded.events)
+        document.querySelector("#concertSearch-btn").addEventListener("click", function(){
+            // console.log("you clicked search button")
+            const concertSearchValue = document.querySelector("#concertSearch").value 
+            // console.log(concertSearchValue)
+            //         // Print 'results' to the DOM
+                document.querySelector("#results").innerHTML =
+                `<h4>Concerts in Nashville</h4>
+        //         <p>${eventInfoArray._embedded.events}</p>`
+        });
     });
 
     
@@ -13,11 +22,18 @@ fetch("https://app.ticketmaster.com/discovery/v2/events.json?classificationName=
 
 
 //add an event listener for the search text in id="concertSearch" button id="concertSearch-btn".  might need an if/else with statement for value typed into search.
-document.querySelector("#concertSearch-btn").addEventListener("click", function(){
-    // console.log("you clicked search button")
-    const concertSearchValue = document.querySelector("#concertSearch").value 
-    console.log(concertSearchValue)
-});
+// document.querySelector("#concertSearch-btn").addEventListener("click", function(){
+//     // console.log("you clicked search button")
+//     const concertSearchValue = document.querySelector("#concertSearch").value 
+//     // console.log(concertSearchValue)
+//     //         // Print 'results' to the DOM
+//         document.querySelector("#results").innerHTML =
+//         `<h4>Concerts in Nashville</h4>
+//         <p>${eventInfoArray._embedded.events}</p>`
+// });
+
+
+
 
 
 
