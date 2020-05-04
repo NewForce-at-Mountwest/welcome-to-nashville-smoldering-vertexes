@@ -21,7 +21,7 @@ header{
     padding: 1em;
 }
 
-.search{
+.search, .results, .itinerary{
     margin: 1em;
 }
 
@@ -30,11 +30,4 @@ header{
     background-repeat: no-repeat;
     width: 8em;
     margin-left: 2em;
-}
-
-.nashville-flag{
-    justify-content: flex-end;
-    margin-left: 8em;
-    background-image: url(https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Nashville%2C_Tennessee.png);
-    background-repeat: no-repeat;
 }
