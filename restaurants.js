@@ -15,7 +15,6 @@ document.querySelector(".restaurants-div").innerHTML += `
 `
 
 
-
 document.querySelector(".restaurants-div").addEventListener("click", function () {
 
     if(event.target.id === "restaurants-btn"){
@@ -25,7 +24,7 @@ document.querySelector(".restaurants-div").addEventListener("click", function ()
     // fetch statement to get the restaurants for Nashville using the zomato api and parsing the response to json
     fetch(`https://developers.zomato.com/api/v2.1/search?entity_id=1138&entity_type=city&q=${type}`, {
         headers: {
-            "user-key": "d551a890df0c959e96ecd3ba09324aa3",
+            "user-key": zomatoAPIKey,
         }
     })
         .then(restaurants => restaurants.json())
@@ -68,6 +67,7 @@ document.querySelector(".restaurants-div").addEventListener("click", function ()
 
 
 
+// Adds the search result to the itenerary when the add button is clicked
 document.querySelector("#results").addEventListener("click", function(){
         itinPrinter()    
         console.log("It works")
@@ -80,17 +80,8 @@ document.querySelector("#results").addEventListener("click", function(){
 
 
 
-    function linksPrinter() {
-    document.querySelector("#results-div").innerHTML += `
-    <a id="rating-high" href="">Rating high to low</a>
-    <a id="rating-low" href="">Rating low to high</a>
-    <a id="cost-high" href="">Price for two high to low</a>
-    <a id="cost-low" href="">Price for two high to low</a>
-    `
-}
 
-
-
+//Sort functions to sort the restaurant array
 //Syntaxt to call the functions sortRatingHigh(parsedRestaurants.restaurants)
 function sortCostLow(array) {
     array.sort((a, b) =>
