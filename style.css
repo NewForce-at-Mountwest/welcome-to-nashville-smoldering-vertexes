@@ -1,0 +1,33 @@
+*{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+header{
+    width: auto;
+    height: 45vh;
+    font-size: xx-large;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(12, 12, 73);
+}
+
+.header-div {
+    display: block;
+    color: white;
+    width: fit-content;
+    margin: auto;
+    padding: 1em;
+}
+
+.search, .results, .itinerary{
+    margin: 1em;
+}
+
+.header-img{
+    background-image: url(https://media.giphy.com/media/SaSF5cbK6qOvziRaDc/giphy.gif);
+    background-repeat: no-repeat;
+    width: 8em;
+    margin-left: 2em;
+}
