@@ -70,7 +70,7 @@ document.querySelector("#results").addEventListener("click", function(){
         itinPrinter()    
         // console.log("It works")
         // console.log(`#rest-article${event.target.value}`)
-        document.querySelector("#itin-div").appendChild(document.querySelector(`#rest-div${event.target.value}`) )
+        document.querySelector("#restaraunt-selected").appendChild(document.querySelector(`#rest-div${event.target.value}`) )
         document.querySelector("#results-div").remove(document.querySelector(`#rest-article${event.target.value}`)) 
 })
    
