@@ -5,15 +5,10 @@ function resultsPrinter(){
     `
 }
 
-//Itinerary printer
-function itinPrinter() {
-    document.querySelector("#itinerary").innerHTML = `<h2>My itinerary</h2>
+document.querySelector("#itinerary").innerHTML = `<h2>My itinerary</h2>
     <div class="itin-div" id="itin-div">
         <p id="park-selected"></p>
         <p id="brewery-selected"></p>
         <p id="restaraunt-selected"></p>
         <p id="concert-selected"></p>
     </div>`
-}
-
-
