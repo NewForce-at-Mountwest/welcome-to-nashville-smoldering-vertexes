@@ -66,8 +66,7 @@ document.querySelector(".restaurants-div").addEventListener("click", function ()
 
 // #restaurant-selected
 // Adds the search result to the itenerary when the add button is clicked
-document.querySelector("#results").addEventListener("click", function(){
-        itinPrinter()    
+document.querySelector("#results").addEventListener("click", function(){    
         // console.log("It works")
         // console.log(`#rest-article${event.target.value}`)
         document.querySelector("#restaraunt-selected").appendChild(document.querySelector(`#rest-div${event.target.value}`) )
