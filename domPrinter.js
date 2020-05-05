@@ -2,6 +2,11 @@
 function printConcertSearch() {
     document.querySelector(".concerts-div").innerHTML = `<input type="search" placeholder="Search by Artist" id="concertSearch">
     <button id="concertSearch-btn">Search</button>`
+//Search results printer
+function resultsPrinter(){
+    document.querySelector("#results").innerHTML = `<h2>Results</h2>
+    <p id = "tester"></p><div class="results-div" id="results-div"></div>
+    `
 }
 printConcertSearch();
 
@@ -49,7 +54,12 @@ fetch(`https://app.ticketmaster.com/discovery/v2/events.json?classificationName=
 // Itinerary printer
 function itinPrinter() {
     document.querySelector("#itinerary").innerHTML = `<h2>My itinerary</h2>
-    <div class="itin-div" id="itin-div"></div>`
+    <div class="itin-div" id="itin-div">
+        <p id="park-selected"></p>
+        <p id="brewery-selected"></p>
+        <p id="restaraunt-selected"></p>
+        <p id="concert-selected"></p>
+    </div>`
 }
 
 //tailor fetched info in search results to go with add event listener to eventually print to the itinerary
@@ -59,5 +69,4 @@ document.querySelector("#results").addEventListener("click", function(){
 itinPrinter()
     document.querySelector("#concert-selected").append(document.querySelector(`#searchResultDiv--${event.target.value}`));
 });
-
 
