@@ -1,7 +1,8 @@
 //Concert search printer
 function printConcertSearch() {
     document.querySelector(".concerts-div").innerHTML = `<input type="search" placeholder="Search by Artist" id="concertSearch">
-    <button id="concertSearch-btn">Search</button>`
+    <button id="concertSearch-btn">Search</button>`}
+    
 //Search results printer
 function resultsPrinter(){
     document.querySelector("#results").innerHTML = `<h2>Results</h2>
