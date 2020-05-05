@@ -19,6 +19,7 @@ fetch(`https://app.ticketmaster.com/discovery/v2/events.json?classificationName=
             const concertSearchValue = document.querySelector("#concertSearch").value;
             // console.log(concertSearchValue)
             //         // Print 'results' to the DOM if the value meets the condition
+            let counter = 0;
             let test = false;
             for (i = 0; i < eventInfoArray._embedded.events.length; i++) {
                 // console.log(concertSearchValue);
@@ -27,12 +28,15 @@ fetch(`https://app.ticketmaster.com/discovery/v2/events.json?classificationName=
 
                 if (eventInfoArray._embedded.events[i].name.includes(concertSearchValue)) {
                     test = true;
+                    
                     document.querySelector("#results").innerHTML +=
-                        `<h4>Concert Search Results</h4>
+                        `<div id ="searchResultDiv--${counter}">
+                        <h4>Concert Search Results</h4>
                         <p>${eventInfoArray._embedded.events[i].name}</p>
-                <p>${eventInfoArray._embedded.events[i].dates.status.code}</p>
-                <button class="concertSave-btn">Save</button>`
-
+                        <p>${eventInfoArray._embedded.events[i].dates.status.code}</p>
+                        <button class="concertSave-btn--${counter}" value=${counter}>Save</button>
+                        </div>`;
+                        counter++;
                 } if (i === eventInfoArray._embedded.events.length - 1 && test === false) {
                     document.querySelector("#results").innerHTML = `No music for you :(`
                 };
@@ -42,19 +46,10 @@ fetch(`https://app.ticketmaster.com/discovery/v2/events.json?classificationName=
 
 
 
-
-
-
-
-
-// function printConcertSearch(){
-
-
-
 // Itinerary printer
-// function itinPrinter() {
-//     document.querySelector("#itinerary").innerHTML = `<h2>My itinerary</h2>
-//     <div class="itin-div" id="itin-div"></div>`
-// }
+function itinPrinter() {
+    document.querySelector("#itinerary").innerHTML = `<h2>My itinerary</h2>
+    <div class="itin-div" id="itin-div"></div>`
+}
 
 
