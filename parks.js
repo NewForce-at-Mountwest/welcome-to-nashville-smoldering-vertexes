@@ -45,7 +45,13 @@ function fetchAPI(parkInputURL){
     //Fetch API
     fetch(`${parkInputURL}`)
         //Convert to JSON
-        .then(r => r.json())
+        .then(r => {
+            //If invalid URL is sent (because of invalid search parameter)
+            if(r.status === 400){
+                document.querySelector("#tester").innerHTML = "I'm sorry, we could not find the feature you requested. Please try again with a different name, all lowercase letters, plural/singular words, etc. "
+            }
+            else{return r.json()}
+        })
         //Receive data in an array of objects to manipulate
         .then(parksArray => {
             //Add counter to include a numbered list of parks in the results and add to IDs of elements
@@ -53,9 +59,9 @@ function fetchAPI(parkInputURL){
             //For Each loop to parse through the array to select each object
             parksArray.forEach(park => {
                 //Select results container to print '1. park name: park address' with a 'Save' button
-                document.querySelector("#results-div").innerHTML += `<p id="counter--${counter}">${counter}. </p><article class="results" id="result--${counter}">
-                <p>${park.park_name}: <em>${park.mapped_location_address}<em></p></article> 
-                <button id="save--${counter}" type="reset"> Save </button>` 
+                document.querySelector("#results-div").innerHTML += `<article class="results"> <p id="counter--${counter}">${counter}. </p>
+                <p id="result--${counter}">${park.park_name}: <em>${park.mapped_location_address}<em></p> 
+                <button id="save--${counter}" type="reset"> Save </button></article>` 
                 
                 //Increment counter
                 counter++; 
