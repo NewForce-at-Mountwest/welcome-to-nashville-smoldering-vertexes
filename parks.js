@@ -68,7 +68,7 @@ function fetchAPI(parkInputURL){
             })
 
             //Event Listener for functionality of 'Save' button in results container
-            document.querySelector("#result").addEventListener("click", function(){
+            document.querySelector("#results").addEventListener("click", function(){
                 if (event.target.id.includes("save")){
                     //Grabs park name and address by its ID
                     const parkToSave = document.getElementById(`result--${event.target.id.split("--")[1]}`)
