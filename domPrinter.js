@@ -15,26 +15,28 @@ fetch("https://app.ticketmaster.com/discovery/v2/events.json?classificationName=
         console.log(eventInfoArray._embedded.events)
         document.querySelector("#concertSearch-btn").addEventListener("click", function () {
             // console.log("you clicked search button")
+            document.querySelector("#results").innerHTML = '';
             const concertSearchValue = document.querySelector("#concertSearch").value;
             // console.log(concertSearchValue)
             //         // Print 'results' to the DOM if the value meets the condition
-           let test = false;
+            let test = false;
             for (i = 0; i < eventInfoArray._embedded.events.length; i++) {
                 // console.log(concertSearchValue);
                 console.log(!eventInfoArray._embedded.events[i].name.includes(concertSearchValue))
                 // console.log(eventInfoArray._embedded.events[i]);
+
                 if (eventInfoArray._embedded.events[i].name.includes(concertSearchValue)) {
                     test = true;
-                    document.querySelector("#results").innerHTML =
+                    document.querySelector("#results").innerHTML +=
                         `<h4>Concert Search Results</h4>
                         <p>${eventInfoArray._embedded.events[i].name}</p>
                 <p>${eventInfoArray._embedded.events[i].dates.status.code}</p>
                 <button class="concertSave-btn">Save</button>`
-                
-                }else if(!eventInfoArray._embedded.events[i].name.includes(concertSearchValue) && test === false){
+
+                } if (i === eventInfoArray._embedded.events.length - 1 && test === false) {
                     document.querySelector("#results").innerHTML = `No music for you :(`
-                }
-                };   
+                };
+            };
         });
     });
 
