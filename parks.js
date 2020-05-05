@@ -68,7 +68,7 @@ function fetchAPI(parkInputURL){
             })
 
             //Event Listener for functionality of 'Save' button in results container
-            document.querySelector("#results-div").addEventListener("click", function(){
+            document.querySelector("#result").addEventListener("click", function(){
                 if (event.target.id.includes("save")){
                     //Grabs park name and address by its ID
                     const parkToSave = document.getElementById(`result--${event.target.id.split("--")[1]}`)
@@ -82,8 +82,6 @@ function fetchAPI(parkInputURL){
                     parkToSave.remove()
                     saveButton.remove()
 
-                    //Call Itinerary container
-                    itinPrinter()
                     //Add Park to be saved to the itinerary container
                     document.querySelector("#park-selected").appendChild(parkToSave)
                 }
