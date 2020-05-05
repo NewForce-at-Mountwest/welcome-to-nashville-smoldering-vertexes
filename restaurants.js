@@ -29,7 +29,7 @@ document.querySelector(".restaurants-div").addEventListener("click", function ()
     })
         .then(restaurants => restaurants.json())
         .then(parsedRestaurants => {
-            // console.log(parsedRestaurants.restaurants)
+            console.log(parsedRestaurants.restaurants)
             const inputValue = document.querySelector("#restaurants-sort").value
             if (inputValue === "ratingHigh") {
                 sortRatingHigh(parsedRestaurants.restaurants)
@@ -46,14 +46,12 @@ document.querySelector(".restaurants-div").addEventListener("click", function ()
                 document.querySelector("#results-div").innerHTML += `
                 <article class="restaurants-search-result" id="rest-article${counter}">
                 <div class="restaurants-search-div" id="rest-div${counter}">
-                <h4>
+                <p><b>
                 ${singleRestaurant.restaurant.name}
-                </h4>
-                <p>
-                User rating: ${singleRestaurant.restaurant.user_rating.aggregate_rating}
-                </p>
-                <p>
-                Average cost for two: ${singleRestaurant.restaurant.average_cost_for_two}
+                </b> 
+                 Address: ${singleRestaurant.restaurant.location.address} 
+                 User rating: ${singleRestaurant.restaurant.user_rating.aggregate_rating} 
+                 Average cost for two: ${singleRestaurant.restaurant.average_cost_for_two}
                 </p>         
                 </div>
                 <button id=rest-add-btn${counter} value=${counter}>Add</button>           
@@ -66,23 +64,20 @@ document.querySelector(".restaurants-div").addEventListener("click", function ()
     })
 
 
-
+// #restaurant-selected
 // Adds the search result to the itenerary when the add button is clicked
 document.querySelector("#results").addEventListener("click", function(){
         itinPrinter()    
-        console.log("It works")
-        console.log(`#rest-article${event.target.value}`)
-        document.querySelector("#itin-div").append(document.querySelector(`#rest-div${event.target.value}`) )   
+        // console.log("It works")
+        // console.log(`#rest-article${event.target.value}`)
+        document.querySelector("#itin-div").appendChild(document.querySelector(`#rest-div${event.target.value}`) )
+        document.querySelector("#results-div").remove(document.querySelector(`#rest-article${event.target.value}`)) 
 })
    
 
 
-
-
-
-
 //Sort functions to sort the restaurant array
-//Syntaxt to call the functions sortRatingHigh(parsedRestaurants.restaurants)
+//Syntax to call the functions inside fetch: sortRatingHigh(parsedRestaurants.restaurants)
 function sortCostLow(array) {
     array.sort((a, b) =>
         Number(a.restaurant.average_cost_for_two) - Number(b.restaurant.average_cost_for_two)
