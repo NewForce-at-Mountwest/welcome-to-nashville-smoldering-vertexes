@@ -37,7 +37,7 @@ function brewerySearch(name) {
 //adds click funtionality to save button and prints results to the dom
 document.querySelector("#results").addEventListener("click", function () {
   console.log("save click");
-  itinPrinter();
+//   itinPrinter();
   document.querySelector("#brewery-selected").appendChild(document.querySelector(`#brewName${event.target.value}`))
 
 });
