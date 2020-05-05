@@ -28,15 +28,16 @@ function brewerySearch(name) {
         console.log(brewery.name);
         document.querySelector(
           ".results-div"
-        ).innerHTML += `<h3 id="brewName${brewButtonCounter}">${brewery.name}</h3> <button id="saveButton" value=${brewButtonCounter}>save</button>`;
+        ).innerHTML += `<p id="brewName${brewButtonCounter}">${brewery.name}</p> <button id="saveButton" value=${brewButtonCounter}>save</button>`;
         brewButtonCounter++;
       });
     });
 }
 
-//adds click funtionality to save button
+//adds click funtionality to save button and prints results to the dom
 document.querySelector("#results").addEventListener("click", function () {
   console.log("save click");
   itinPrinter();
-  document.querySelector("#itin-div").appendChild(document.querySelector(`#brewName${event.target.value}`))
+  document.querySelector("#brewery-selected").appendChild(document.querySelector(`#brewName${event.target.value}`))
+
 });
