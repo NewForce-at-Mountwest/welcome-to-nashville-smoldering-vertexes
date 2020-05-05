@@ -8,8 +8,8 @@ printConcertSearch();
 // function to pull ticket master's API, listen for the click, and place the value in a loop/conditional to print to the dom with a save button.
 //ticket master url https://app.ticketmaster.com/discovery/v2/
 //searched by city
-//api key Hftj2vZHCGI9rWySOyg1NifFCLWd7KMA
-fetch("https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&city=nashville&apikey=Hftj2vZHCGI9rWySOyg1NifFCLWd7KMA")
+
+fetch(`https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&city=nashville&apikey=${ticketMasterKey}`)
     .then(response => response.json())
     .then(eventInfoArray => {
         console.log(eventInfoArray._embedded.events)
